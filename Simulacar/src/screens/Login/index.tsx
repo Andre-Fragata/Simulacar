@@ -1,6 +1,6 @@
 import { Text, TextInput, View } from "react-native";
 import { styles } from "./style";
-import LinearGradient from "react-native-linear-gradient";
+import {LinearGradient} from 'expo-linear-gradient';
 
 function Login(){
     return (
