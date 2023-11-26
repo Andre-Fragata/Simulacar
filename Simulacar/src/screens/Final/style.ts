@@ -3,36 +3,35 @@ import { StyleSheet } from "react-native";
 
 
 export const styles = StyleSheet.create({
+    
     container: {
         flex: 1,
         alignItems: 'center',
-    },
+    },    
     main: {
         fontSize: 36,
         fontWeight: "bold",
-        marginBottom: 20,
-        color: "white",  
+        marginBottom: 120,
+        color: "white",
         marginTop: 50 
     },
-    inputContainer: {
-        width: "80%",
-        marginTop: 260
-    },
-    input1: {
-        backgroundColor: "white",
-        borderRadius: 12,
+    subtitulo: {
+        fontSize: 18,
+        fontWeight: "bold",
+        color: "white",
         marginBottom: 20,
-        height: 48,
-        width: 340,
-        alignItems: 'center',
-        borderWidth: 2
+        marginTop: 20,
+        marginLeft: 20,
+        marginRight: 20
     },
-    input2: {
-        backgroundColor: "white",
-        borderRadius: 12,
+    back: {
+        backgroundColor: '#D9D9D9',
+        marginTop: 16,
+        width: 345,
         height: 48,
-        width: 340,
-        borderWidth: 2
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexDirection: "row",
     },
     button: {
         justifyContent: 'center',
@@ -43,6 +42,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         fontWeight: "bold",
         marginTop: 80
+
     },
     buttonText: {
         fontSize: 24,
@@ -53,6 +53,13 @@ export const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: "bold",
         color: '#5987CC',
-        marginTop: 70
+        marginTop: 50,
     },
+    textback: {
+        color: "#1A254E",
+        fontSize: 18,
+        fontWeight: "bold",
+        marginLeft: 10,
+        marginRight: 10
+    }
 })

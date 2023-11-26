@@ -1,6 +1,8 @@
 import { createStackNavigator } from "@react-navigation/stack"
 import Login from "../screens/Login";
 import Home from "../screens/Home";
+import DadosVeiculo from "../screens/DadosVeiculo";
+import Final from "../screens/Final";
 
 
 function AppRoutes(){
@@ -10,6 +12,8 @@ function AppRoutes(){
         <Navigator screenOptions={{headerShown: false}}>
             <Screen name="login" component={Login}/>
             <Screen name="home" component={Home}/>
+            <Screen name="dadosvei" component={DadosVeiculo}/>
+            <Screen name="final" component={Final}/>
         </Navigator>
     )
 }

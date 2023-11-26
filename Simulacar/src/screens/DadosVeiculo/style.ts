@@ -3,6 +3,7 @@ import { StyleSheet } from "react-native";
 
 
 export const styles = StyleSheet.create({
+    
     container: {
         flex: 1,
         alignItems: 'center',
@@ -16,7 +17,6 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         fontWeight: "bold",
         marginTop: 80
-
     },
     buttonText: {
         fontSize: 24,
@@ -29,6 +29,15 @@ export const styles = StyleSheet.create({
         color: '#5987CC',
         marginTop: 70
     },
+    subtitulo: {
+        fontSize: 18,
+        fontWeight: "bold",
+        color: "white",
+        marginBottom: 20,
+        marginTop: 100,
+        marginLeft: 20,
+        marginRight: 20
+    },
     main: {
         fontSize: 36,
         fontWeight: "bold",
@@ -36,32 +45,29 @@ export const styles = StyleSheet.create({
         color: "white",  
         marginTop: 50 
     },
-    subtitulo: {
-        fontSize: 18,
-        fontWeight: "bold",
-        color: "white",
-        marginBottom: 120,
-        marginTop: 100,
-        marginLeft: 20,
-        marginRight: 20
-    },
     inputContainer: {
         width: "80%",
+        marginTop: 100
     },
     input1: {
         backgroundColor: "white",
         borderRadius: 12,
-        marginBottom: 80,
+        marginBottom: 20,
         height: 48,
         width: 340,
         alignItems: 'center',
         borderWidth: 2
     },
-    textButton: {
-        fontSize: 20,
+    input2: {
+        backgroundColor: "white",
+        borderRadius: 12,
+        height: 48,
+        width: 340,
+        borderWidth: 2
+    },
+    textInput: {
+        fontSize: 16,
         color: 'white',
         fontWeight: "bold",
-        
-        
-    }
+    },
 })
