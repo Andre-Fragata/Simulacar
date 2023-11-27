@@ -30,7 +30,7 @@ function Home(){
 
     const [idade, setIdade] = useState();
 
-    const {usuario, setUsuario} = route.params;
+    const {usuario} = route.params;
 
 
     return(

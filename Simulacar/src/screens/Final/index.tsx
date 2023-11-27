@@ -1,4 +1,4 @@
-import { Alert, Button, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./style";
 import {LinearGradient} from 'expo-linear-gradient';
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -7,7 +7,7 @@ function Final(){
     const navigation = useNavigation();
     const route = useRoute();
 
-    const {usuario, idade, anoCarro, modeloCarro} = route.params;
+    const {usuario, idade, anoCarro, modeloCarro, carValue} = route.params;
 
     const handleFinalToDados = () => {
         navigation.navigate('dadosvei', {usuario});
@@ -25,18 +25,26 @@ function Final(){
 
     
 
-    const calcularSeguro = (idade, anoCarro) => {
+    const calcularSeguro = (idade, anoCarro, carValue) => {
         let valorBase = 1000;
         let ajusteIdade = 0; // Inicializado com 0
         let ajusteAnoCarro = 0; // Inicializado com 0
-      
+        let ajusteValorCarro = 0;
+
+
+        if (carValue > 100000) {
+            ajusteValorCarro = 1000; // Ajuste para valor do carro acima de 100 mil
+        } else if (carValue >= 50000 && carValue <= 100000) {
+            ajusteValorCarro = 500; // Ajuste para valor do carro entre 50 mil e 100 mil
+        }
+
         // Ajuste com base na idade
         if (idade < 22) {
-          ajusteIdade = 0.2 * valorBase; // Acréscimo de 20%
+          ajusteIdade = 0.2 * (valorBase + ajusteValorCarro); // Acréscimo de 20%
         } else if (idade >= 22 && idade <= 28) {
-          ajusteIdade = 0.18 * valorBase; // Acréscimo de 18%
+          ajusteIdade = 0.18 * (valorBase + ajusteValorCarro); // Acréscimo de 18%
         } else {
-          ajusteIdade = -0.15 * valorBase; // Redução de 15%
+          ajusteIdade = -0.15 * (valorBase + ajusteValorCarro); // Redução de 15%
         }
       
         // Ajuste com base no ano do carro
@@ -47,20 +55,22 @@ function Final(){
         } else if (anoCarro >= 2016) {
           ajusteAnoCarro = -0.1 * valorBase; // Redução de 10%
         }
+
+        
       
-        const valorSeguro = valorBase + ajusteIdade + ajusteAnoCarro;
+        const valorSeguro = valorBase + ajusteIdade + ajusteAnoCarro + ajusteValorCarro;
       
         return {
           valorBase,
           ajusteIdade,
           ajusteAnoCarro,
           valorSeguro,
+          ajusteValorCarro,
         };
       };
       
 
-    const {valorBase, ajusteIdade, ajusteAnoCarro, valorSeguro} = calcularSeguro(idade, anoCarro);
-
+    const {valorBase, ajusteIdade, ajusteAnoCarro, valorSeguro, ajusteValorCarro} = calcularSeguro(idade, anoCarro, carValue);
 
     return (
         <LinearGradient
@@ -75,7 +85,7 @@ function Final(){
             <View>
                 <View style={styles.back}>
                     <Text style={styles.textback}>Base </Text>
-                    <Text style={styles.textback}>R$ {valorBase}</Text>
+                    <Text style={styles.textback}>R$ {ajusteValorCarro + valorBase}</Text>
                 </View>
                 <View style={styles.back}>
                     <Text style={styles.textback}>por idade </Text>

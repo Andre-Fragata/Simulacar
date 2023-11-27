@@ -10,10 +10,11 @@ function DadosVeiculo(){
 
     const [modeloCarro, setModeloCarro] = useState();
     const [anoCarro, setAnoCarro] = useState();
+    const [carValue, setCarValue] = useState();
 
     const handleDadosToFinal = () => {
       if (modeloCarro && anoCarro){
-        navigation.navigate('final', {usuario, idade, modeloCarro, anoCarro})
+        navigation.navigate('final', {usuario, idade, modeloCarro, anoCarro, carValue})
       }else {
         Alert.alert('Aviso', 'Você precisa informar o Usuário e Senha.', [
           {
@@ -57,6 +58,15 @@ function DadosVeiculo(){
               value={anoCarro}
               keyboardType="numeric"
               style={styles.input2}
+              />
+            </View>
+            <View>
+              <Text style={styles.textInput}>Qual o valor do seu veiculo ?</Text>
+              <TextInput
+              onChangeText={setCarValue}
+              value={carValue}
+              keyboardType="numeric"
+              style={styles.input3}
               />
             </View>
             <TouchableOpacity style={styles.button} onPress={handleDadosToFinal}>

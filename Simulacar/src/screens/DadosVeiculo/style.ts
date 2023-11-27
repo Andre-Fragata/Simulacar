@@ -47,12 +47,12 @@ export const styles = StyleSheet.create({
     },
     inputContainer: {
         width: "80%",
-        marginTop: 100
+        marginTop: 40
     },
     input1: {
         backgroundColor: "white",
         borderRadius: 12,
-        marginBottom: 20,
+        marginBottom: 10,
         height: 48,
         width: 340,
         alignItems: 'center',
@@ -63,7 +63,15 @@ export const styles = StyleSheet.create({
         borderRadius: 12,
         height: 48,
         width: 340,
-        borderWidth: 2
+        borderWidth: 2,
+        marginBottom: 10
+    },
+    input3: {
+        backgroundColor: "white",
+        borderRadius: 12,
+        height: 48,
+        width: 340,
+        borderWidth: 2,
     },
     textInput: {
         fontSize: 16,
