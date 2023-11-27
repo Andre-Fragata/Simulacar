@@ -2,12 +2,35 @@ import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import { styles } from "./style";
 import {LinearGradient} from 'expo-linear-gradient';
 import { useNavigation, useRoute } from "@react-navigation/native";
+import BouncyCheckbox from "react-native-bouncy-checkbox";
+import { useEffect, useState } from "react";
+
+
+
 
 function Final(){
     const navigation = useNavigation();
     const route = useRoute();
+    const [taxaDolar, setTaxaDolar] = useState();
+    const [convertToDollar, setConvertToDollar] = useState(false);
 
-    const {usuario, idade, anoCarro, modeloCarro, carValue} = route.params;
+    useEffect(() => {
+        // Aqui você fará uma chamada à API para obter a taxa de câmbio atualizada
+        // Substitua a URL abaixo pela URL da API que fornece a taxa de câmbio do dólar
+        fetch("https://economia.awesomeapi.com.br/last/USD-BRL")
+          .then(response => response.json())
+          .then(data => {
+            // Supondo que a resposta da API tenha uma propriedade 'rate' representando a taxa de câmbio
+            console.log("Taxa de câmbio obtida com sucesso:", data?.USDBRL?.bid);
+            setTaxaDolar(data?.USDBRL?.bid);
+          })
+          .catch(error => {
+            console.error("Erro ao obter a taxa de câmbio:", error);
+          });
+      }, []);
+
+
+    const {usuario, idade, anoCarro, modeloCarro, carValue} = route.params || {};
 
     const handleFinalToDados = () => {
         navigation.navigate('dadosvei', {usuario});
@@ -23,6 +46,7 @@ function Final(){
       {text: 'OK', onPress: () => navigation.navigate('login')},
     ]);
 
+    
     
 
     const calcularSeguro = (idade, anoCarro, carValue) => {
@@ -56,15 +80,17 @@ function Final(){
           ajusteAnoCarro = -0.1 * valorBase; // Redução de 10%
         }
 
-        
+        const taxaDolarValida = taxaDolar || 1;
       
         const valorSeguro = valorBase + ajusteIdade + ajusteAnoCarro + ajusteValorCarro;
       
+        const valorSeguroConvertido = convertToDollar ? valorSeguro / taxaDolarValida : valorSeguro;
+
         return {
           valorBase,
           ajusteIdade,
           ajusteAnoCarro,
-          valorSeguro,
+          valorSeguro: valorSeguroConvertido,
           ajusteValorCarro,
         };
       };
@@ -100,6 +126,16 @@ function Final(){
                     <Text style={styles.textback}>R$ {valorSeguro.toFixed(2)}</Text>
                 </View>
             </View>
+            <BouncyCheckbox
+                size={18}
+                fillColor="blue"
+                unfillColor="#FFFFFF"
+                text="Converter para Dólar"
+                iconStyle={{ borderColor: "red" }}
+                innerIconStyle={{ borderWidth: 2 }}
+                isChecked={convertToDollar}
+                onPress={(isChecked: boolean) => setConvertToDollar(isChecked)}
+            />
             <View >
                 <TouchableOpacity style={styles.button} onPress={handleFinalizar}>
                     <Text style={styles.buttonText}>Finalizar</Text>
