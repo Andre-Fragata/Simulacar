@@ -6,6 +6,8 @@ import { useState } from "react";
 
 function Login(){
     const navigation = useNavigation();
+    const [usuario, setUsuario] = useState<string>('');
+    const [senha, setSenha] = useState('');
 
     const handleNavigateToHome = () => {
       if (usuario && senha){
@@ -22,8 +24,7 @@ function Login(){
       }
     };
 
-    const [usuario, setUsuario] = useState('');
-    const [senha, setSenha] = useState('');
+    
 
     return (
         <LinearGradient
