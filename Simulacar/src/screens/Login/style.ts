@@ -55,4 +55,9 @@ export const styles = StyleSheet.create({
         color: '#5987CC',
         marginTop: 70
     },
+    textButton: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: "bold",
+    }
 })

@@ -61,7 +61,5 @@ export const styles = StyleSheet.create({
         fontSize: 20,
         color: 'white',
         fontWeight: "bold",
-        
-        
     }
 })

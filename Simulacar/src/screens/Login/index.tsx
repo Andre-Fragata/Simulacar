@@ -11,7 +11,7 @@ function Login(){
       if (usuario && senha){
         navigation.navigate('home', {usuario});
       }else {
-        Alert.alert('Aviso', 'Você precisa informar o Usuário e Senha.', [
+        Alert.alert('Aviso', 'Você precisa informar o Usuário para prosseguir.', [
           {
             text: 'Cancel',
             onPress: () => console.log('Cancel Pressed'),
