@@ -3,6 +3,7 @@ import {LinearGradient} from 'expo-linear-gradient';
 import { styles } from "./style";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useState } from "react";
+import { TextInputMask } from 'react-native-masked-text';
 
 function Home(){
     const navigation = useNavigation();
@@ -13,10 +14,10 @@ function Home(){
     }
 
     const handleHomeToDados = () => {
-      if (idade){
+      if (idade && userCPF){
         navigation.navigate('dadosvei', {usuario, idade})
       }else {
-        Alert.alert('Aviso', 'Você precisa informar o Usuário e Senha.', [
+        Alert.alert('Aviso', 'Você precisa informar a idade e CPF para continuar.', [
           {
             text: 'Cancel',
             onPress: () => console.log('Cancel Pressed'),
@@ -29,6 +30,7 @@ function Home(){
     }
 
     const [idade, setIdade] = useState();
+    const [userCPF, setUserCPF] = useState();
 
     const {usuario} = route.params;
 
@@ -51,6 +53,16 @@ function Home(){
             style={styles.input1}
             keyboardType="numeric"
             />
+          </View>
+          <View>
+            <Text style={styles.textButton}>Informe o seu CPF</Text>
+            <TextInputMask
+            style={styles.input2}
+            type={'cpf'}
+            value={userCPF}
+            onChangeText={setUserCPF}
+            keyboardType="numeric"
+          />
           </View>
           <TouchableOpacity style={styles.button} onPress={handleHomeToDados}>
               <Text style={styles.buttonText}>Próximo</Text>

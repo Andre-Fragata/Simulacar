@@ -3,6 +3,7 @@ import { styles } from "./style";
 import {LinearGradient} from 'expo-linear-gradient';
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { useState } from "react";
+import { TextInputMask } from 'react-native-masked-text';
 
 function DadosVeiculo(){
     const navigation = useNavigation();
@@ -11,12 +12,14 @@ function DadosVeiculo(){
     const [modeloCarro, setModeloCarro] = useState();
     const [anoCarro, setAnoCarro] = useState();
     const [carValue, setCarValue] = useState();
+    const [placa, setPlaca] = useState();
+
 
     const handleDadosToFinal = () => {
       if (modeloCarro && anoCarro){
         navigation.navigate('final', {usuario, idade, modeloCarro, anoCarro, carValue})
       }else {
-        Alert.alert('Aviso', 'Você precisa informar o Usuário e Senha.', [
+        Alert.alert('Aviso', 'Você precisa informar o dados necessários para realizar o calculo.', [
           {
             text: 'Cancel',
             onPress: () => console.log('Cancel Pressed'),
@@ -67,6 +70,18 @@ function DadosVeiculo(){
               value={carValue}
               keyboardType="numeric"
               style={styles.input3}
+              />
+            </View>
+            <View>
+              <Text style={styles.textInput}>Informe a Placa do veiculo</Text>
+              <TextInputMask
+              style={styles.input4}
+              type={'custom'}
+              options={{
+                mask: 'AAA-9999', // Use a máscara desejada para a placa
+              }}
+              value={placa}
+              onChangeText={setPlaca}
               />
             </View>
             <TouchableOpacity style={styles.button} onPress={handleDadosToFinal}>
