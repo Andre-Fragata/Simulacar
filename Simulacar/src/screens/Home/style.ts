@@ -51,7 +51,15 @@ export const styles = StyleSheet.create({
     input1: {
         backgroundColor: "white",
         borderRadius: 12,
-        marginBottom: 80,
+        marginBottom: 20,
+        height: 48,
+        width: 340,
+        alignItems: 'center',
+        borderWidth: 2
+    },
+    input2: {
+        backgroundColor: "white",
+        borderRadius: 12,
         height: 48,
         width: 340,
         alignItems: 'center',

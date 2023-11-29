@@ -34,20 +34,20 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "white",
         marginBottom: 20,
-        marginTop: 100,
+        marginTop: 60,
         marginLeft: 20,
         marginRight: 20
     },
     main: {
         fontSize: 36,
         fontWeight: "bold",
-        marginBottom: 20,
+        marginBottom: 0,
         color: "white",  
         marginTop: 50 
     },
     inputContainer: {
         width: "80%",
-        marginTop: 40
+        marginTop: 20
     },
     input1: {
         backgroundColor: "white",
@@ -67,6 +67,14 @@ export const styles = StyleSheet.create({
         marginBottom: 10
     },
     input3: {
+        backgroundColor: "white",
+        borderRadius: 12,
+        height: 48,
+        width: 340,
+        borderWidth: 2,
+        marginBottom: 10
+    },
+    input4: {
         backgroundColor: "white",
         borderRadius: 12,
         height: 48,
